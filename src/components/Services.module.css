@@ -1,0 +1,228 @@
+.section {
+  background-color: var(--color-light-gray);
+  position: relative;
+  overflow: hidden;
+}
+
+.sectionHeader {
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto 4rem;
+}
+
+.sectionTitle {
+  font-size: clamp(2rem, 4vw, 2.5rem);
+  margin-bottom: 1rem;
+}
+
+.sectionSubtitle {
+  color: var(--color-graphite-gray);
+  font-size: 1.125rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+.card {
+  background: var(--color-white);
+  border-radius: 16px;
+  transition: all var(--transition-normal);
+  border: 1px solid transparent;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+
+.cardImage {
+  width: 100%;
+  height: 200px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.iconWrapperOverlay {
+  position: absolute;
+  bottom: -24px;
+  left: 2rem;
+  width: 56px;
+  height: 56px;
+  border-radius: 12px;
+  background-color: var(--color-electric-blue);
+  color: var(--color-white);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 10px rgba(0, 102, 255, 0.3);
+  z-index: 2;
+  transition: all var(--transition-normal);
+}
+
+.card:hover .iconWrapperOverlay {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0, 102, 255, 0.4);
+}
+
+.cardContent {
+  padding: 3rem 2rem 2.5rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, var(--color-deep-blue), var(--color-electric-blue));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--transition-normal);
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+  border-color: rgba(0, 102, 255, 0.1);
+}
+
+.card:hover::before {
+  transform: scaleX(1);
+}
+
+/* Removendo iconWrapper antigo */
+
+.cardTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: var(--color-deep-blue);
+}
+
+.cardDescription {
+  color: var(--color-graphite-gray);
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+.cardAction {
+  margin-top: auto;
+  color: var(--color-electric-blue);
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  font-size: 0.9375rem;
+  transition: gap var(--transition-fast);
+}
+
+.card:hover .cardAction {
+  gap: 0.75rem;
+}
+
+@media (max-width: 992px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Carousel styles */
+.carouselContainer {
+  margin-top: 5rem;
+  padding-top: 4rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.carouselHeader {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.carouselTitle {
+  font-size: clamp(1.75rem, 3vw, 2rem);
+  color: var(--color-deep-blue);
+  margin-bottom: 0.5rem;
+}
+
+.carouselSubtitle {
+  color: var(--color-graphite-gray);
+  font-size: 1.125rem;
+}
+
+.carouselViewport {
+  overflow: hidden;
+  width: 100%;
+  padding: 1rem 0 2rem 0;
+  cursor: grab;
+}
+
+.carouselViewport:active {
+  cursor: grabbing;
+}
+
+.carouselTrack {
+  display: flex;
+  touch-action: pan-y pinch-zoom;
+  /* Não precisamos de gap aqui, o embla lida melhor com margin/padding nos itens */
+}
+
+.carouselItem {
+  flex: 0 0 300px;
+  min-width: 0;
+  height: 225px;
+  margin-right: 1.5rem;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+}
+
+.carouselItem:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-md);
+}
+
+.carouselImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.placeholderImage {
+  width: 100%;
+  height: 100%;
+  background-color: #f1f5f9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #94a3b8;
+  font-weight: 500;
+  font-size: 1.125rem;
+  border: 2px dashed #cbd5e1;
+  border-radius: 12px;
+}
+
+
+
+@media (max-width: 768px) {
+  .carouselItem {
+    width: 250px;
+    height: 187.5px;
+  }
+}

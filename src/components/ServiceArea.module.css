@@ -1,0 +1,188 @@
+.section {
+  background-color: var(--color-deep-blue);
+  color: var(--color-white);
+  padding: 6rem 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+  max-width: 1000px;
+}
+
+.header {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 2.5rem;
+}
+
+.iconWrapper {
+  width: 64px;
+  height: 64px;
+  border-radius: 16px;
+  background: rgba(0, 102, 255, 0.15);
+  border: 1px solid rgba(0, 102, 255, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.icon {
+  color: var(--color-electric-blue);
+}
+
+.title {
+  color: var(--color-white) !important;
+  font-size: clamp(2rem, 3.5vw, 2.5rem);
+  font-weight: 700;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.subtitle {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1.125rem;
+  max-width: 620px;
+  line-height: 1.6;
+  text-align: center;
+}
+
+.contentGrid {
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  gap: 2rem;
+  width: 100%;
+  align-items: stretch;
+}
+
+.infoCard {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(12px);
+  border-radius: 20px;
+  padding: 2.5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1.75rem;
+}
+
+.infoBlock {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  text-align: left;
+}
+
+.infoIconWrapper {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: rgba(0, 102, 255, 0.15);
+  border: 1px solid rgba(0, 102, 255, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.infoIcon {
+  color: var(--color-electric-blue);
+}
+
+.infoTitle {
+  color: var(--color-white) !important;
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.infoText {
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 0.9375rem;
+  line-height: 1.5;
+}
+
+.routeBtn {
+  background-color: var(--color-electric-blue);
+  color: var(--color-white);
+  padding: 0.9rem 1.5rem;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 0.9375rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  transition: all var(--transition-fast);
+  box-shadow: 0 4px 14px 0 rgba(0, 102, 255, 0.39);
+  margin-top: 0.5rem;
+}
+
+.routeBtn:hover {
+  background-color: var(--color-electric-blue-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 102, 255, 0.5);
+}
+
+.mapWrapper {
+  width: 100%;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: #111827;
+  display: flex;
+}
+
+.mapIframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 380px;
+  border: none;
+}
+
+@media (max-width: 868px) {
+  .contentGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .mapIframe {
+    height: 320px;
+  }
+}
+
+/* Background minimalist map/pattern effect */
+.bgPattern {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100vw;
+  height: 100%;
+  opacity: 0.05;
+  background-image: radial-gradient(circle at 2px 2px, white 1px, transparent 0);
+  background-size: 32px 32px;
+  z-index: 1;
+}
+
+.glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60vw;
+  height: 60vw;
+  background: radial-gradient(circle, rgba(0, 102, 255, 0.18) 0%, transparent 70%);
+  z-index: 1;
+}
