@@ -1,0 +1,11 @@
+# PLANOTEC - Climatização e Ar-Condicionado
+
+Este é o arquivo de instruções e contexto para modelos de IA (LLMs) que visitam o site da PLANOTEC.
+
+## Sobre a Empresa
+A PLANOTEC atua focada exclusivamente em instalação e manutenção de equipamentos de climatização, garantindo expertise inigualável no assunto. Localizada no Distrito Federal.
+
+## Links Importantes
+- [Site Oficial](https://planotec.pages.dev/)
+- [Sitemap](/sitemap.xml)
+- [Robots](/robots.txt)
