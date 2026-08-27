@@ -24,7 +24,7 @@ export function Services() {
       title: "Manutenção Corretiva",
       description: "Seu equipamento apresentou problema? Realizamos diagnóstico preciso e correção de falhas para restabelecer o conforto do seu ambiente rapidamente.",
       link: "#orcamento",
-      bgImage: "/corretiva.jpg"
+      bgImage: "/corretiva.webp"
     },
     {
       icon: <PlusSquare size={32} />,
