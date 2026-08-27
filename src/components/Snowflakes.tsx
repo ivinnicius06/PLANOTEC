@@ -1,5 +1,5 @@
 import React from 'react';
-import { Snowflake as SnowflakeIcon, Circle } from 'lucide-react';
+import { Snowflake as SnowflakeIcon } from 'lucide-react';
 import styles from './Snowflakes.module.css';
 
 // Função determinística para geração de randomicos baseados em índice
