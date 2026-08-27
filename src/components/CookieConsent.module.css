@@ -57,7 +57,8 @@
   }
 }
 
-.acceptBtn, .declineBtn {
+.acceptBtn,
+.declineBtn {
   padding: 0.75rem 1.5rem;
   border-radius: 8px;
   font-weight: 600;
@@ -69,7 +70,9 @@
 }
 
 @media (min-width: 768px) {
-  .acceptBtn, .declineBtn {
+
+  .acceptBtn,
+  .declineBtn {
     flex: initial;
   }
 }
@@ -96,6 +99,7 @@
   from {
     transform: translateY(100%);
   }
+
   to {
     transform: translateY(0);
   }

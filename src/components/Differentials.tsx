@@ -1,4 +1,5 @@
 import { Users, Crosshair, Wrench, Handshake } from 'lucide-react';
+import { Snowflakes } from './Snowflakes';
 import styles from './Differentials.module.css';
 
 export function Differentials() {
@@ -27,6 +28,7 @@ export function Differentials() {
 
   return (
     <section className={`section-padding ${styles.section}`} id="diferenciais">
+      <Snowflakes />
       <div className={`container ${styles.container}`}>
         
         <div className={styles.sectionHeader}>

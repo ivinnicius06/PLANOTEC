@@ -1,5 +1,7 @@
 .section {
   background-color: var(--color-white);
+  position: relative;
+  overflow: hidden;
 }
 
 .container {
@@ -7,11 +9,24 @@
   grid-template-columns: 1fr 1.5fr;
   gap: 4rem;
   align-items: flex-start;
+  position: relative;
+  z-index: 1;
 }
 
-.headerContainer {
+.sectionHeader {
   position: sticky;
   top: 120px;
+  z-index: 2;
+  /* Cria uma aura branca protetora (bruma) sob o texto para garantir leitura sem bordas duras */
+  background: radial-gradient(
+    circle at 40% 40%, 
+    rgba(255, 255, 255, 0.98) 0%, 
+    rgba(255, 255, 255, 0.8) 45%, 
+    rgba(255, 255, 255, 0) 75%
+  );
+  padding: 4rem;
+  margin: -4rem;
+  border-radius: 50%; /* Faz a máscara ficar arredondada caso as quinas encostem */
 }
 
 .title {
@@ -91,8 +106,17 @@
     grid-template-columns: 1fr;
     gap: 3rem;
   }
-  .headerContainer {
+  .sectionHeader {
     position: static;
+    background: radial-gradient(
+      circle at center, 
+      rgba(255, 255, 255, 0.98) 0%, 
+      rgba(255, 255, 255, 0.7) 60%, 
+      rgba(255, 255, 255, 0) 80%
+    );
+    padding: 3rem 1.5rem;
+    margin: -3rem -1.5rem;
+    border-radius: 40px;
   }
   .item {
     padding: 2rem;

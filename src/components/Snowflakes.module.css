@@ -1,0 +1,98 @@
+.snowContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .flake {
+    /* Em vez de esconder, apenas pausa para que apareçam na tela caso o usuário tenha reduced motion */
+    animation-duration: 20s !important;
+  }
+}
+
+.flake {
+  position: absolute;
+  top: var(--top-mobile);
+  left: var(--left-mobile);
+  width: var(--size-mobile);
+  height: var(--size-mobile);
+  opacity: var(--opacity);
+  /* Azul da marca clareado para parecer gelo e frio em fundo branco */
+  color: #99c2ff;
+
+  /* Animação orgânica moderna */
+  animation: modernFloat var(--duration) var(--delay) infinite ease-in-out;
+  will-change: transform;
+}
+
+/* O rotate será aplicado ao SVG interno de forma mais limpa em modernFloat */
+.flake svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* Depth specifics */
+.back {
+  filter: blur(2px);
+  color: #cce0ff;
+}
+
+.middle {
+  filter: drop-shadow(0 0 2px rgba(0, 102, 255, 0.2));
+}
+
+.front {
+  filter: drop-shadow(0 0 5px rgba(0, 102, 255, 0.4));
+  color: var(--color-electric-blue);
+}
+
+/* Visibility Control */
+.visMobile {
+  display: block;
+}
+
+.visTablet,
+.visDesktop {
+  display: none;
+}
+
+@media (min-width: 576px) {
+  .visTablet {
+    display: block;
+  }
+}
+
+@media (min-width: 992px) {
+  .visDesktop {
+    display: block;
+  }
+
+  .flake {
+    left: var(--left-desktop) !important;
+    top: var(--top-desktop) !important;
+    width: var(--size-desktop) !important;
+    height: var(--size-desktop) !important;
+  }
+}
+
+/* Keyframes de flutuação 360° orgânica */
+@keyframes modernFloat {
+  0%, 100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  25% {
+    transform: translate(var(--drift), calc(var(--drift-y) * -1)) rotate(calc(var(--drift-r) * 1deg));
+  }
+  50% {
+    transform: translate(calc(var(--drift) * -0.5), var(--drift-y)) rotate(calc(var(--drift-r) * -0.5deg));
+  }
+  75% {
+    transform: translate(calc(var(--drift) * -1), calc(var(--drift-y) * -0.5)) rotate(calc(var(--drift-r) * -1deg));
+  }
+}
