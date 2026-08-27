@@ -2,6 +2,7 @@ import { MapPin, Phone, Mail, Globe, Clock } from 'lucide-react';
 import { useState } from 'react';
 import styles from './Footer.module.css';
 import { LegalModal } from './LegalModal';
+import { CookieConsent } from './CookieConsent';
 
 export function Footer() {
   const [isLegalModalOpen, setIsLegalModalOpen] = useState(false);
@@ -10,6 +11,11 @@ export function Footer() {
   const openLegalModal = (e: React.MouseEvent, type: 'privacy' | 'terms') => {
     e.preventDefault();
     setLegalModalType(type);
+    setIsLegalModalOpen(true);
+  };
+
+  const openPrivacyFromCookies = () => {
+    setLegalModalType('privacy');
     setIsLegalModalOpen(true);
   };
 
@@ -80,6 +86,8 @@ export function Footer() {
         onClose={() => setIsLegalModalOpen(false)}
         type={legalModalType}
       />
+      
+      <CookieConsent onOpenPrivacyPolicy={openPrivacyFromCookies} />
     </footer>
   );
 }
