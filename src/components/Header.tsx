@@ -21,8 +21,8 @@ export function Header() {
   return (
     <header className={`${styles.header} ${scrolled ? styles.scrolled : ''}`}>
       <div className={`container ${styles.container}`}>
-        <a href="#" className={styles.logo} onClick={closeMobileMenu}>
-          <img src="/planotec-header-logo.png" alt="PLANOTEC" className={styles.headerLogoImg} />
+        <a href="#home" className={styles.headerLogo} aria-label="Voltar ao início">
+          <img src="/planotec-header-logo.png" alt="PLANOTEC" className={styles.headerLogoImg} width="200" height="40" />
         </a>
         
         <nav className={`${styles.nav} ${isMobileMenuOpen ? styles.open : ''}`}>
