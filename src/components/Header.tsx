@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react';
-import { Menu } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import styles from './Header.module.css';
 
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -14,25 +15,32 @@ export function Header() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const closeMobileMenu = () => setIsMobileMenuOpen(false);
+  const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
+
   return (
     <header className={`${styles.header} ${scrolled ? styles.scrolled : ''}`}>
       <div className={`container ${styles.container}`}>
-        <a href="#" className={styles.logo}>
+        <a href="#" className={styles.logo} onClick={closeMobileMenu}>
           <img src="/planotec-header-logo.png" alt="PLANOTEC" className={styles.headerLogoImg} />
         </a>
         
-        <nav className={styles.nav}>
-          <a href="#servicos" className={styles.navLink}>Serviços</a>
-          <a href="#trabalhos" className={styles.navLink}>Nossos trabalhos</a>
-          <a href="#diferenciais" className={styles.navLink}>Por que escolher</a>
-          <a href="#processo" className={styles.navLink}>Como funciona</a>
-          <a href="#orcamento" className={styles.ctaButton}>
+        <nav className={`${styles.nav} ${isMobileMenuOpen ? styles.open : ''}`}>
+          <a href="#servicos" className={styles.navLink} onClick={closeMobileMenu}>Serviços</a>
+          <a href="#trabalhos" className={styles.navLink} onClick={closeMobileMenu}>Nossos trabalhos</a>
+          <a href="#diferenciais" className={styles.navLink} onClick={closeMobileMenu}>Por que escolher</a>
+          <a href="#processo" className={styles.navLink} onClick={closeMobileMenu}>Como funciona</a>
+          <a href="#orcamento" className={styles.ctaButton} onClick={closeMobileMenu}>
             Solicitar orçamento
           </a>
         </nav>
         
-        <button className={styles.mobileMenuBtn} aria-label="Abrir menu">
-          <Menu size={24} />
+        <button 
+          className={styles.mobileMenuBtn} 
+          aria-label="Alternar menu"
+          onClick={toggleMobileMenu}
+        >
+          {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
       </div>
     </header>

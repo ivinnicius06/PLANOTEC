@@ -102,11 +102,27 @@
 @media (max-width: 768px) {
   .nav {
     display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: var(--color-white);
+    flex-direction: column;
+    padding: 1.5rem;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    gap: 1.5rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+  }
+  .nav.open {
+    display: flex;
   }
   .mobileMenuBtn {
     display: block;
   }
   .ctaButton {
-    display: none;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    margin-top: 0.5rem;
   }
 }
