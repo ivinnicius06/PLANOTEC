@@ -49,7 +49,7 @@ export function Footer() {
           <h3 className={styles.heading}>Contato</h3>
           <div className={styles.contactItem}>
             <MapPin size={20} className={styles.contactIcon} />
-            <span>Taguatinga — Distrito Federal</span>
+            <span>Distrito Federal e Entorno</span>
           </div>
           <div className={styles.contactItem}>
             <Phone size={20} className={styles.contactIcon} />
@@ -86,7 +86,7 @@ export function Footer() {
         onClose={() => setIsLegalModalOpen(false)}
         type={legalModalType}
       />
-      
+
       <CookieConsent onOpenPrivacyPolicy={openPrivacyFromCookies} />
     </footer>
   );
