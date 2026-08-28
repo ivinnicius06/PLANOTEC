@@ -58,7 +58,8 @@ export function Services() {
       title: "Instalação Profissional",
       description: "Instalação realizada com precisão. Avaliação criteriosa do ambiente, posicionamento ideal e testes rigorosos para garantir máxima eficiência.",
       link: "#orcamento",
-      bgImage: "/NovaInstalacao.jpeg"
+      bgImage: "/NovaInstalacao.jpeg",
+      bgPosition: "center 75%"
     },
     {
       icon: <BotijaoIcon size={32} />,
@@ -79,7 +80,10 @@ export function Services() {
       title: "Central de Água Gelada",
       description: "Atendemos bancos, shopping centers, lojas e hospitais. Especialistas em ar condicionado nos modelos Self, Fancoil, Fancolete, VRF/VRV e Chiller.",
       link: "#orcamento",
-      bgImage: "/chiller.jpg"
+      bgImage: "/chiller.jpg",
+      bgSize: "contain",
+      bgPosition: "center",
+      bgColor: "var(--color-light-gray)"
     }
   ];
 
@@ -98,6 +102,10 @@ export function Services() {
     { src: "/Servico08.jpeg", alt: "Serviço realizado 8" },
     { src: "/Servico09.jpeg", alt: "Serviço realizado 9" },
     { src: "/Servico10.jpeg", alt: "Serviço realizado 10" },
+    { src: "/Servico11.jpg", alt: "Serviço realizado 11" },
+    { src: "/Servico12.jpg", alt: "Serviço realizado 12" },
+    { src: "/Servico13.jpg", alt: "Serviço realizado 13" },
+    { src: "/Servico14.jpg", alt: "Serviço realizado 14" },
   ];
 
   return (
@@ -119,7 +127,10 @@ export function Services() {
                     className={styles.cardImage}
                     style={{
                       backgroundImage: `url(${service.bgImage})`,
-                      backgroundPosition: service.bgPosition || 'center'
+                      backgroundPosition: (service as any).bgPosition || 'center',
+                      backgroundSize: (service as any).bgSize || 'cover',
+                      backgroundRepeat: (service as any).bgSize === 'contain' ? 'no-repeat' : undefined,
+                      backgroundColor: (service as any).bgColor || undefined
                     }}
                   >
                     <div className={styles.iconWrapperOverlay}>
