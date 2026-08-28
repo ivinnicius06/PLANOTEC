@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
-import { Settings, Activity, PlusSquare, ArrowRight, PenTool, Wind } from 'lucide-react';
+import { Settings, Activity, PlusSquare, ArrowRight, PenTool, Wind, X } from 'lucide-react';
 import type { EmblaCarouselType } from 'embla-carousel';
 import { BotijaoIcon } from './BotijaoIcon';
 import styles from './Services.module.css';
@@ -19,6 +19,7 @@ export function Services() {
 
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [scrollSnaps, setScrollSnaps] = useState<number[]>([]);
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
   const onInit = useCallback((emblaApi: EmblaCarouselType) => {
     setScrollSnaps(emblaApi.scrollSnapList());
@@ -109,10 +110,11 @@ export function Services() {
   ];
 
   return (
-    <section className={`section-padding ${styles.section}`} id="servicos">
-      <div className="container">
-        <div className={styles.sectionHeader}>
-          <h2 className={styles.sectionTitle}>Nossos Serviços</h2>
+    <>
+      <section className={`section-padding ${styles.section}`} id="servicos">
+        <div className="container">
+          <div className={styles.sectionHeader}>
+            <h2 className={styles.sectionTitle}>Nossos Serviços</h2>
           <p className={styles.sectionSubtitle}>
             Soluções completas em climatização para garantir o conforto e a qualidade do ar que você respira.
           </p>
@@ -161,9 +163,13 @@ export function Services() {
           ))}
         </div>
 
-        <div className={styles.carouselContainer} id="trabalhos">
+        </div>
+      </section>
+
+      <section className={`section-padding ${styles.portfolioSection}`} id="trabalhos">
+        <div className="container">
           <div className={styles.carouselHeader}>
-            <h3 className={styles.carouselTitle}>Nossos Trabalhos</h3>
+            <h2 className={styles.carouselTitle}>Nossos Trabalhos</h2>
             <p className={styles.carouselSubtitle}>Confira alguns dos serviços realizados por nossa equipe.</p>
           </div>
           <div className={styles.carouselViewport} ref={emblaRef}>
@@ -171,7 +177,14 @@ export function Services() {
               {portfolioImages.map((item, index) => (
                 <div key={index} className={styles.carouselItem}>
                   {item.src ? (
-                    <img src={item.src} alt={item.alt} className={styles.carouselImage} loading="lazy" />
+                    <img 
+                      src={item.src} 
+                      alt={item.alt} 
+                      className={styles.carouselImage} 
+                      loading="lazy"
+                      onClick={() => setSelectedImage(item.src)}
+                      title="Clique para ampliar"
+                    />
                   ) : (
                     <div className={styles.placeholderImage}>
                       <span>Foto {index + 1}</span>
@@ -182,7 +195,21 @@ export function Services() {
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+
+      {selectedImage && (
+        <div className={styles.lightbox} onClick={() => setSelectedImage(null)}>
+          <button className={styles.lightboxClose} onClick={() => setSelectedImage(null)} aria-label="Fechar ampliação">
+            <X size={32} />
+          </button>
+          <img 
+            src={selectedImage} 
+            alt="Visualização ampliada" 
+            className={styles.lightboxImage} 
+            onClick={(e) => e.stopPropagation()} 
+          />
+        </div>
+      )}
+    </>
   );
 }
