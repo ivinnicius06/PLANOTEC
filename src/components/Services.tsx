@@ -1,4 +1,6 @@
-import { Settings, Activity, PlusSquare, ArrowRight } from 'lucide-react';
+import { useState, useEffect, useCallback } from 'react';
+import { Settings, Activity, PlusSquare, ArrowRight, PenTool, Wind } from 'lucide-react';
+import type { EmblaCarouselType } from 'embla-carousel';
 import { BotijaoIcon } from './BotijaoIcon';
 import styles from './Services.module.css';
 import useEmblaCarousel from 'embla-carousel-react';
@@ -9,6 +11,31 @@ export function Services() {
     { loop: true, align: 'start' },
     [Autoplay({ delay: 3000, stopOnInteraction: true })]
   );
+
+  const [servicesRef, servicesApi] = useEmblaCarousel(
+    { align: 'start', loop: true, slidesToScroll: 1 },
+    [Autoplay({ delay: 4000, stopOnInteraction: true })]
+  );
+
+  const [selectedIndex, setSelectedIndex] = useState(0);
+  const [scrollSnaps, setScrollSnaps] = useState<number[]>([]);
+
+  const onInit = useCallback((emblaApi: EmblaCarouselType) => {
+    setScrollSnaps(emblaApi.scrollSnapList());
+  }, []);
+
+  const onSelect = useCallback((emblaApi: EmblaCarouselType) => {
+    setSelectedIndex(emblaApi.selectedScrollSnap());
+  }, []);
+
+  useEffect(() => {
+    if (!servicesApi) return;
+    onInit(servicesApi);
+    onSelect(servicesApi);
+    servicesApi.on('reInit', onInit);
+    servicesApi.on('reInit', onSelect);
+    servicesApi.on('select', onSelect);
+  }, [servicesApi, onInit, onSelect]);
 
   const services = [
     {
@@ -31,14 +58,28 @@ export function Services() {
       title: "Instalação",
       description: "Instalação realizada com precisão. Avaliação criteriosa do ambiente, posicionamento ideal e testes rigorosos para garantir máxima eficiência.",
       link: "#orcamento",
-      bgImage: "/instalacao.jpg"
+      bgImage: "/NovaInstalacao.jpeg"
     },
     {
       icon: <BotijaoIcon size={32} />,
       title: "Recarga de Gás",
       description: "Restabeleça a capacidade de refrigeração. Identificamos e corrigimos vazamentos antes da recarga para eficiência contínua e gelo duradouro.",
       link: "#orcamento",
-      bgImage: "/recarga.jpg"
+      bgImage: "/NovaCargaGas.jpeg"
+    },
+    {
+      icon: <PenTool size={32} />,
+      title: "Projeto e Dimensionamento de Infraestrutura",
+      description: "Planejamento estrutural e dimensionamento exato para a instalação ideal do seu sistema de climatização, garantindo estética e eficiência desde a fundação.",
+      link: "#orcamento",
+      bgImage: "/infraestrutura.jpg"
+    },
+    {
+      icon: <Wind size={32} />,
+      title: "Central de Água Gelada",
+      description: "Atendemos bancos, shopping centers, lojas e hospitais. Especialistas em ar condicionado nos modelos Self, Fancoil, Fancolete, VRF/VRV e Chiller.",
+      link: "#orcamento",
+      bgImage: "/chiller.jpg"
     }
   ];
 
@@ -69,28 +110,43 @@ export function Services() {
           </p>
         </div>
 
-        <div className={styles.grid}>
-          {services.map((service, index) => (
-            <div key={index} className={styles.card}>
-              <div
-                className={styles.cardImage}
-                style={{
-                  backgroundImage: `url(${service.bgImage})`,
-                  backgroundPosition: service.bgPosition || 'center'
-                }}
-              >
-                <div className={styles.iconWrapperOverlay}>
-                  {service.icon}
+        <div className={styles.servicesViewport} ref={servicesRef}>
+          <div className={styles.servicesTrack}>
+            {services.map((service, index) => (
+              <div key={index} className={styles.serviceSlide}>
+                <div className={styles.card}>
+                  <div
+                    className={styles.cardImage}
+                    style={{
+                      backgroundImage: `url(${service.bgImage})`,
+                      backgroundPosition: service.bgPosition || 'center'
+                    }}
+                  >
+                    <div className={styles.iconWrapperOverlay}>
+                      {service.icon}
+                    </div>
+                  </div>
+                  <div className={styles.cardContent}>
+                    <h3 className={styles.cardTitle}>{service.title}</h3>
+                    <p className={styles.cardDescription}>{service.description}</p>
+                    <a href={service.link} className={styles.cardAction}>
+                      Solicitar avaliação <ArrowRight size={18} />
+                    </a>
+                  </div>
                 </div>
               </div>
-              <div className={styles.cardContent}>
-                <h3 className={styles.cardTitle}>{service.title}</h3>
-                <p className={styles.cardDescription}>{service.description}</p>
-                <a href={service.link} className={styles.cardAction}>
-                  Solicitar avaliação <ArrowRight size={18} />
-                </a>
-              </div>
-            </div>
+            ))}
+          </div>
+        </div>
+
+        <div className={styles.dotsContainer}>
+          {scrollSnaps.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => servicesApi?.scrollTo(index)}
+              className={`${styles.dot} ${index === selectedIndex ? styles.dotActive : ''}`}
+              aria-label={`Ir para o slide ${index + 1}`}
+            />
           ))}
         </div>
 

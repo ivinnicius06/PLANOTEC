@@ -2,8 +2,7 @@
   position: fixed;
   bottom: 2rem;
   right: 2rem;
-  background-color: #2e25d3;
-  /* cor do whatsapp */
+  background-color: #25D366;
   color: white;
   width: 60px;
   height: 60px;
@@ -11,7 +10,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  box-shadow: 0 4px 14px rgba(37, 86, 211, 0.4);
+  box-shadow: 0 4px 14px rgba(37, 211, 102, 0.4);
   z-index: 100;
   transition: all var(--transition-normal);
   text-decoration: none;
@@ -19,7 +18,7 @@
 
 .fab:hover {
   transform: translateY(-4px) scale(1.05);
-  box-shadow: 0 6px 20px rgba(37, 51, 211, 0.6);
+  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.6);
   color: white;
 }
 
@@ -32,7 +31,7 @@
   width: 100%;
   height: 100%;
   border-radius: 50%;
-  background-color: #2525d3;
+  background-color: #25D366;
   z-index: -1;
   animation: pulse 2s infinite;
 }

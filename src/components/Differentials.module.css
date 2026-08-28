@@ -52,17 +52,23 @@
   display: flex;
   gap: 2rem;
   padding: 3rem;
-  background: var(--color-light-gray);
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   border-radius: 20px;
   transition: all var(--transition-normal);
-  border: 1px solid transparent;
+  border: 1px solid rgba(255, 255, 255, 0.5);
 }
 
 .item:hover {
   background: var(--color-white);
   box-shadow: var(--shadow-lg);
-  border-color: rgba(0, 102, 255, 0.1);
+  border-color: rgba(0, 102, 255, 0.15);
   transform: translateY(-2px);
+}
+
+.item:nth-child(even):hover {
+  border-color: rgba(255, 107, 0, 0.15);
 }
 
 .iconWrapper {
@@ -81,6 +87,15 @@
 
 .item:hover .iconWrapper {
   background-color: var(--color-electric-blue);
+  color: var(--color-white);
+}
+
+.item:nth-child(even) .iconWrapper {
+  color: var(--color-warm-orange);
+}
+
+.item:nth-child(even):hover .iconWrapper {
+  background-color: var(--color-warm-orange);
   color: var(--color-white);
 }
 

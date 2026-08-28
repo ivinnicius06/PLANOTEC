@@ -37,7 +37,7 @@ export function Hero() {
           </h1>
 
           <p className={styles.subheadline}>
-            Instalação, manutenção e higienização de sistemas de ar-condicionado para residências, empresas e ambientes comerciais em Taguatinga e região.
+            Instalação, manutenção e higienização de sistemas de ar-condicionado para residências, empresas e ambientes comerciais no Distrito Federal e região. <strong>TELEFONE: (61) 99663-3679</strong>
           </p>
 
           <div className={styles.actions}>

@@ -1,4 +1,4 @@
-import { MessageCircle } from 'lucide-react';
+import { WhatsAppIcon } from './WhatsAppIcon';
 import styles from './WhatsAppFAB.module.css';
 
 // colocar numero domingos
@@ -26,7 +26,7 @@ export function WhatsAppFAB() {
       aria-label="Falar conosco pelo WhatsApp"
       onClick={handleTrackClick}
     >
-      <MessageCircle size={32} />
+      <WhatsAppIcon size={32} />
     </a>
   );
 }

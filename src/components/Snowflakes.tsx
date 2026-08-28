@@ -29,7 +29,7 @@ interface SnowflakeData {
 
 const generateSnowflakes = (): SnowflakeData[] => {
   const flakes: SnowflakeData[] = [];
-  const TOTAL = 55; // Aumentado para melhor preenchimento
+  const TOTAL = 100; // Dobrado para garantir abundância no celular
 
   for (let i = 0; i < TOTAL; i++) {
     const s1 = seededRandom(i * 13.1);
@@ -44,13 +44,13 @@ const generateSnowflakes = (): SnowflakeData[] => {
     let sizeDesktop = 0;
     let sizeMobile = 0;
 
-    // Distribuindo 55 flocos
-    if (i < 20) {
+    // Distribuindo 100 flocos
+    if (i < 40) {
       depth = 'back';
       type = s1 > 0.5 ? 'blur' : 'simple';
       sizeDesktop = 20 + (s2 * 35); // 20px a 55px
       sizeMobile = 15 + (s2 * 20);
-    } else if (i < 40) {
+    } else if (i < 80) {
       depth = 'middle';
       type = s1 > 0.4 ? 'simple' : 'complex';
       sizeDesktop = 45 + (s2 * 60); // 45px a 105px
@@ -64,8 +64,8 @@ const generateSnowflakes = (): SnowflakeData[] => {
 
     // Visibility based on index thresholds:
     let visibility: 'mobile' | 'tablet' | 'desktop' = 'mobile';
-    if (i >= 15 && i < 30) visibility = 'tablet';
-    if (i >= 30) visibility = 'desktop';
+    if (i >= 80 && i < 90) visibility = 'tablet';
+    if (i >= 90) visibility = 'desktop';
 
     // Left position logic
     let leftDesktop = 0;
@@ -75,12 +75,7 @@ const generateSnowflakes = (): SnowflakeData[] => {
       leftDesktop = 55 + (s4 * 50); // 55% to 105% (direita preenchida levemente)
     }
     
-    let leftMobile = 0;
-    if (s4 < 0.5) {
-      leftMobile = -10 + (s3 * 25); // -10% to 15%
-    } else {
-      leftMobile = 85 + (s3 * 25); // 85% to 110%
-    }
+    let leftMobile = -5 + (s3 * 110); // Espalhados por trás dos cards de -5% a 105%
 
     // Top position logic (Espalhados ao longo de toda a altura da seção)
     const topDesktop = 2 + (s5 * 92); // 2% a 94% 

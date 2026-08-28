@@ -12,6 +12,12 @@
   --color-graphite-gray: #334155;
   --color-text: #1E293B;
   
+  /* Warm Colors (Nova Identidade) */
+  --color-warm-orange: #FF6B00;
+  --color-warm-orange-hover: #E65A00;
+  --color-amber: #FFB300;
+  --gradient-brand: linear-gradient(135deg, var(--color-electric-blue), var(--color-warm-orange));
+  
   /* Backgrounds */
   --bg-main: var(--color-light-gray);
   --bg-dark: var(--color-deep-blue);
@@ -123,7 +129,7 @@ img, video {
 }
 
 .text-gradient {
-  background: linear-gradient(135deg, var(--color-deep-blue) 0%, var(--color-electric-blue) 100%);
+  background: var(--gradient-brand);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;

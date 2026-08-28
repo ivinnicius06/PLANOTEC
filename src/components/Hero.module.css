@@ -118,7 +118,7 @@
 }
 
 .primaryBtn {
-  background-color: var(--color-electric-blue);
+  background-color: var(--color-warm-orange);
   color: var(--color-white);
   padding: 1rem 2rem;
   border-radius: 6px;
@@ -129,13 +129,13 @@
   gap: 0.5rem;
   transition: all var(--transition-fast);
   text-decoration: none;
-  box-shadow: 0 4px 14px 0 rgba(0, 102, 255, 0.39);
+  box-shadow: 0 4px 14px 0 rgba(255, 107, 0, 0.39);
 }
 
 .primaryBtn:hover {
-  background-color: var(--color-electric-blue-hover);
+  background-color: var(--color-warm-orange-hover);
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(0, 102, 255, 0.4);
+  box-shadow: 0 6px 20px rgba(255, 107, 0, 0.4);
 }
 
 .secondaryBtn {
