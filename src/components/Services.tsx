@@ -40,7 +40,7 @@ export function Services() {
   const services = [
     {
       icon: <Settings size={32} />,
-      title: "Manutenção Preventiva",
+      title: "Manutenção Preventiva (limpeza e higienização)",
       description: "Evite problemas antes que eles aconteçam. A manutenção preventiva ajuda a manter o desempenho do equipamento, reduzir falhas e prolongar sua vida útil.",
       link: "#orcamento",
       bgImage: "/preventiva.jpg",
@@ -48,14 +48,14 @@ export function Services() {
     },
     {
       icon: <Activity size={32} />,
-      title: "Manutenção Corretiva",
+      title: "Manutenção Corretiva (conserto e troca de peças)",
       description: "Seu equipamento apresentou problema? Realizamos diagnóstico preciso e correção de falhas para restabelecer o conforto do seu ambiente rapidamente.",
       link: "#orcamento",
       bgImage: "/corretiva.webp"
     },
     {
       icon: <PlusSquare size={32} />,
-      title: "Instalação",
+      title: "Instalação Profissional",
       description: "Instalação realizada com precisão. Avaliação criteriosa do ambiente, posicionamento ideal e testes rigorosos para garantir máxima eficiência.",
       link: "#orcamento",
       bgImage: "/NovaInstalacao.jpeg"
